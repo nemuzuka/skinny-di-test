@@ -11,7 +11,8 @@ class RootController extends ApplicationController with DiInjector {
 
       //Serviceインスタンス取得 & 呼び出し
       val staffService = injector.getInstance(classOf[StaffService])
-      staffService.createStaff("DIも良いもんだぜ！" + new Date())
+      val id = staffService.createStaff("DIも良いもんだぜ！" + new Date())
+      println(id)
 
       render("/root/index")
     }

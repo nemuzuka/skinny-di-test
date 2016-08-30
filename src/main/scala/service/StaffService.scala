@@ -32,4 +32,5 @@ trait StaffService {
   }
 }
 
+/** 実装クラス. */
 class StaffServiceImpl extends StaffService
