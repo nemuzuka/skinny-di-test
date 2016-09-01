@@ -25,7 +25,7 @@ class RootControllerSpec extends FunSpec with Matchers with MockitoSugar with DB
   /** Mock使用時のInjectorとして上書きする. */
   trait MockDiInjector extends DiInjector {
     override val injector = Guice.createInjector(
-      Modules.`override`(new BindModule()).`with`(createTestModule())
+      Modules.`override`(new BindModule()).`with`(createMockModule())
     )
   }
 
@@ -33,7 +33,7 @@ class RootControllerSpec extends FunSpec with Matchers with MockitoSugar with DB
     * Mock用DI定義上書き.
     * @return Module
     */
-  private def createTestModule() = new AbstractModule() {
+  private def createMockModule() = new AbstractModule() {
     override def configure() = {
       //Mockの定義
       val m = mock[StaffService]

@@ -22,7 +22,7 @@ class StaffServiceSpec extends fixture.FunSpec with AutoRollback with Matchers w
   before {
     //差し替えたMockで設定する
     Guice.createInjector(
-      Modules.`override`(new BindModule()).`with`(createTestModule())
+      Modules.`override`(new BindModule()).`with`(createMockModule())
     ).injectMembers(this)
   }
 
@@ -42,7 +42,7 @@ class StaffServiceSpec extends fixture.FunSpec with AutoRollback with Matchers w
     * DI定義上書き.
     * @return Module
     */
-  private def createTestModule() = new AbstractModule() {
+  private def createMockModule() = new AbstractModule() {
     override def configure() = {
       //Mockの定義
       val m = mock[StaffDao]
